@@ -1,0 +1,174 @@
+---
+// PassesSection.astro
+---
+
+<section class="relative w-full py-8 md:py-16 px-6 overflow-hidden">
+    <!-- Flores decorativas IZQUIERDA - Repetidas verticalmente -->
+    <div
+        class="absolute left-0 top-0 bottom-0 w-8 md:w-16 pointer-events-none z-10"
+    >
+        <div
+            class="flores-izq-passes flex flex-col h-full justify-between opacity-0"
+        >
+            <img
+                src="/imagenes/FloresLaterales.png"
+                alt=""
+                class="w-full h-auto mt-10"
+            />
+        </div>
+    </div>
+
+    <!-- Flores decorativas DERECHA - Repetidas verticalmente -->
+    <div
+        class="absolute right-0 top-0 bottom-0 w-8 md:w-16 pointer-events-none z-10"
+    >
+        <div
+            class="flores-der-passes flex flex-col h-full justify-between opacity-0"
+        >
+            <img
+                src="/imagenes/FloresLaterales.png"
+                alt=""
+                class="mt-10 w-full h-auto scale-x-[-1]"
+            />
+        </div>
+    </div>
+
+    <div class="max-w-lg mx-auto relative z-20">
+        <!-- Número de Pases -->
+        <div class="seccion-pases text-center opacity-0">
+            <h3
+                class="font-charm text-2xl md:text-3xl text-[#C9A24D] font-bold mb-3"
+            >
+                Pases reservados
+            </h3>
+
+            <!-- Icono de ticket -->
+            <div class="flex justify-center mb-3">
+                <img
+                    src="/imagenes/Ticket.png"
+                    alt="Ticket"
+                    class="w-14 h-14 md:w-16 md:h-16 object-contain"
+                />
+            </div>
+
+            <!-- Número en cuadrado redondeado -->
+            <div class="flex justify-center mb-2">
+                <div
+                    class="w-14 h-14 md:w-20 md:h-20 rounded-xl border-[3px] border-[#C9A24D] flex items-center justify-center bg-white shadow-md"
+                >
+                    <span class="text-4xl md:text-5xl font-bold text-[#C9A24D]"
+                        >2</span
+                    >
+                </div>
+            </div>
+
+            <!-- Texto "Un invitado" -->
+            <p
+                class="font-charm text-lg md:text-xl text-[#C8B38B] mb-4 font-medium"
+            >
+                Dos invitados
+            </p>
+
+            <!-- Mensaje amable y compacto -->
+            <div class="max-w-sm mx-auto">
+                <p
+                    class="font-charm text-lg md:text-xl text-[#C8B38B] leading-relaxed mb-2"
+                >
+                    Agradecemos de corazón que respete el número de pases
+                    asignados, lo que nos permitirá organizar esta celebración
+                    tan especial de la mejor manera
+                </p>
+                <p
+                    class="font-charm text-base md:text-lg text-[#C9A24D] italic"
+                >
+                    ¡Gracias por tu comprensión! 💛
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .font-charm {
+        font-family: "Charm", cursive !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación de flores izquierda
+    gsap.fromTo(
+        ".flores-izq-passes",
+        {
+            opacity: 0,
+            x: -100,
+            rotation: -10,
+        },
+        {
+            opacity: 1,
+            x: 0,
+            rotation: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".flores-izq-passes",
+                start: "top 85%",
+                toggleActions: "play none none none",
+            },
+        },
+    );
+
+    // Animación de flores derecha
+    gsap.fromTo(
+        ".flores-der-passes",
+        {
+            opacity: 0,
+            x: 100,
+            rotation: 10,
+        },
+        {
+            opacity: 1,
+            x: 0,
+            rotation: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".flores-der-passes",
+                start: "top 85%",
+                toggleActions: "play none none none",
+            },
+        },
+    );
+
+    // Animación de sección de PASES
+    gsap.fromTo(
+        ".seccion-pases",
+        {
+            opacity: 0,
+            y: 60,
+            scale: 0.95,
+        },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1.3,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".seccion-pases",
+                start: "top 80%",
+                toggleActions: "play none none none",
+            },
+        },
+    );
+</script>

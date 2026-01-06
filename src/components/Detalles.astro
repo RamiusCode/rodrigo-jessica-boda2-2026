@@ -1,0 +1,136 @@
+---
+// DressCodeSection.astro
+---
+
+<section class="relative w-full py-4 md:py-20 px-6 overflow-hidden">
+  <!-- Flores decorativas IZQUIERDA - Repetidas verticalmente -->
+  <div
+    class="absolute left-0 top-0 bottom-0 w-8 md:w-16 pointer-events-none z-10"
+  >
+    <div
+      class="flores-izq-dress flex flex-col h-full justify-between opacity-0"
+    >
+      <img
+        src="/imagenes/FloresLaterales.png"
+        alt=""
+        class="w-full h-auto mt-10"
+      />
+    </div>
+  </div>
+
+  <!-- Flores decorativas DERECHA - Repetidas verticalmente -->
+  <div
+    class="absolute right-0 top-0 bottom-0 w-8 md:w-16 pointer-events-none z-10"
+  >
+    <div
+      class="flores-der-dress flex flex-col h-full justify-between opacity-0"
+    >
+      <img
+        src="/imagenes/FloresLaterales.png"
+        alt=""
+        class="mt-10 w-full h-auto scale-x-[-1]"
+      />
+    </div>
+  </div>
+
+  <div class="max-w-xl mx-auto relative z-20">
+    <!-- Código de Vestimenta -->
+    <div class="seccion-vestimenta text-center opacity-0">
+      <h3 class="font-charm text-2xl md:text-3xl text-[#C9A24D] font-bold mb-3">
+        Código de vestimenta
+      </h3>
+
+      <!-- Imagen de vestimenta -->
+      <div class="flex justify-center mb-4">
+        <img
+          src="/imagenes/CodigoVestimenta.png"
+          alt="Vestimenta formal"
+          class="w-16 h-16 md:w-20 md:h-20 object-contain"
+        />
+      </div>
+
+      <p class="font-charm text-xl md:text-2xl text-[#C8B38B] font-semibold">
+        Formal
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .font-charm {
+    font-family: "Charm", cursive !important;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animación de flores izquierda
+  gsap.fromTo(
+    ".flores-izq-dress",
+    {
+      opacity: 0,
+      x: -100,
+      rotation: -10,
+    },
+    {
+      opacity: 1,
+      x: 0,
+      rotation: 0,
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".flores-izq-dress",
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+    },
+  );
+
+  // Animación de flores derecha
+  gsap.fromTo(
+    ".flores-der-dress",
+    {
+      opacity: 0,
+      x: 100,
+      rotation: 10,
+    },
+    {
+      opacity: 1,
+      x: 0,
+      rotation: 0,
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".flores-der-dress",
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+    },
+  );
+
+  // Animación de sección de VESTIMENTA
+  gsap.fromTo(
+    ".seccion-vestimenta",
+    {
+      opacity: 0,
+      y: 60,
+      scale: 0.95,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 1.3,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".seccion-vestimenta",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    },
+  );
+</script>
